@@ -1,17 +1,26 @@
 import React from 'react';
 
+import { HiOutlineUser, HiOutlinePhone, HiMinusCircle } from 'react-icons/hi';
+
+import {
+  ContactItems,
+  ContactItem,
+  ContactListButton,
+} from './ContactList.styles';
+
 const ContactList = ({ value, onDeleteContant }) => {
   return (
-    <ul>
+    <ContactItems>
       {value.map(({ id, name, number }) => (
-        <li key={id} id={id}>
+        <ContactItem key={id} id={id}>
+          {<HiOutlineUser />}
           {name}: {number}
-          <button type="button" onClick={() => onDeleteContant(id)}>
-            Delete
-          </button>
-        </li>
+          <ContactListButton type="button" onClick={() => onDeleteContant(id)}>
+            Delete {<HiMinusCircle />}
+          </ContactListButton>
+        </ContactItem>
       ))}
-    </ul>
+    </ContactItems>
   );
 };
 

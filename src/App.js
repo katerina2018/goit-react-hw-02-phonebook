@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import './App.css';
-
+import Section from './components/Section';
 import Form from './components/Form';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
@@ -56,18 +56,15 @@ class App extends Component {
     const visibleName = this.getVisibleContact();
 
     return (
-      <>
-        <h1>Phonebook</h1>
+      <Section>
+        <h1 className="App">Phonebook</h1>
+
         <Form onSubmit={this.formSubmitHandler} />
-        <div>
-          <h2>Contacts</h2>
-          <Filter value={this.state.filter} onChange={this.changeFilter} />
-          <ContactList
-            value={visibleName}
-            onDeleteContant={this.deleteContant}
-          />
-        </div>
-      </>
+
+        <h2 className="App">Contacts</h2>
+        <Filter value={this.state.filter} onChange={this.changeFilter} />
+        <ContactList value={visibleName} onDeleteContant={this.deleteContant} />
+      </Section>
     );
   }
 }
